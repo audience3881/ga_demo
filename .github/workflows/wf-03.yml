@@ -1,0 +1,15 @@
+---
+name: use context like gh-context to get the metadata info of wf,jobs,repo,etc
+on: workflow_dispatch
+jobs:
+  job_01:
+    runs-on: ubuntu-latest
+    steps:
+      - name: task_01
+        env:
+          var_01: v1
+        run: |
+          echo "step-scoped var: ${var_01}"
+          echo "repo_name: ${{github.repository}}"
+          echo "wf_name: ${{github.workflow}}"
+          echi "trggerd_by: ${{github.triggering_actor}}"
