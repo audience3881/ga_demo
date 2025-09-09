@@ -1,12 +1,16 @@
 ---
 name: demo_01
 on:
+  #run the wf when user push the local commits to given branch in rr
   push:
-    #we can given filters on each event like for which branch event should be triggered
+    #we can given filters on each event like for which branch event will occur
     branches:
       - main
+  #run the wf when pull_request event occurs
   pull_request:
     branches: ["main", "feature/1"]
+  #allow users to manually trigger and run the wf
+  workflow_dispatch:
 jobs:
   #give job name
   job_01:
