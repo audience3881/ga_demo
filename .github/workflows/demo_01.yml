@@ -1,0 +1,30 @@
+---
+name: demo_01
+on:
+  push:
+    #we can given filters on each event like for which branch event should be triggered
+    branches:
+      - main
+  pull_request:
+    branches: ["main", "feature/1"]
+jobs:
+  #give job name
+  job_01:
+    #machine type where job will run. machine can be gh-hosted or self-hosted runner
+    runs-on: ubuntu-latest
+    #step refers to seq of tasks to be executed when we run job inside the given runner
+    steps:
+      #name of the step
+      - name: task_01 -> run single line shell cmd
+        #run shell cmds
+        # > means will not preserve no of lines so cmd will run in single line
+        run: >
+          echo hello japan-1
+          osaka-2
+      - name: task_02 -> run multi-line shell cmds
+        # | means will preserve no of lines so cmd will run as it is and not in single line
+        run: |
+          echo hi-1
+          echo hi-2
+      #give custom action that will perform specific task
+      - uses: actions/checkout@v4
