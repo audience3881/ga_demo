@@ -1,0 +1,16 @@
+---
+name: use self-hr within wf
+on: workflow_dispatch
+jobs:
+  job_01:
+    runs-on: self-hosted # we will use self-hosted tag given by gh to use self-hr within wf
+    steps:
+      - name: task_01
+        run: |
+          echo "hi-1"
+          echo "mum-12"
+      - name: task_02
+        env:
+          var_01: kiwi-1
+        run: |
+          echo "fruit name: ${var_01}"
