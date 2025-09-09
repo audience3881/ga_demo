@@ -1,0 +1,24 @@
+---
+name: pass input pars when we run wf manually at runtime
+on:
+  workflow_dispatch:
+    inputs:
+      num1:
+        #desc for given input par
+        description: "1st no"
+        default: 0 #default val will be used if val is not specified inip par
+        required: true #true means ip par is mandatory
+      num2:
+        description: "2nd no"
+        default: 0
+        required: true
+jobs:
+  job_01:
+    runs-on: ubuntu-latest
+    steps:
+      - name: task_01 -> calc the sum
+        #unique identifier for step, it is used to ref the step in contexts
+        id: id1
+        run: echo "::set-output name=sum::$((${{inputs.num1}}+${{inputs.num2}}))"
+      - name: task_02 -> display the op
+        run: echo "the sum of ${{inputs.num1}} and ${{inputs.num2}} is ${{steps.id1.outputs.name}}"
