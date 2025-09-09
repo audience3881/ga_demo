@@ -9,7 +9,8 @@ jobs:
         env:
           var_01: v1
         run: |
+          #we use ${{}} to access the context
           echo "step-scoped var: ${var_01}"
           echo "repo_name: ${{github.repository}}"
           echo "wf_name: ${{github.workflow}}"
-          echo "trggerd_by: ${{github.triggering_actor}}"
+          echo "triggerd_by: ${{github.triggering_actor}}" #gh-username

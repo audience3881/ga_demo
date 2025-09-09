@@ -19,6 +19,6 @@ jobs:
       - name: task_01 -> calc the sum
         #unique identifier for step, it is used to ref the step in contexts
         id: id1
-        run: echo "::set-output name=sum::$((${{inputs.num1}}+${{inputs.num2}}))"
+        run: echo "::set-output name=op1::$((${{inputs.num1}}+${{inputs.num2}}))"
       - name: task_02 -> display the op
-        run: echo "the sum of ${{inputs.num1}} and ${{inputs.num2}} is ${{steps.id1.outputs.name}}"
+        run: echo "the sum of ${{inputs.num1}} and ${{inputs.num2}} is ${{steps.id1.outputs.op1}}"
