@@ -1,1 +1,1 @@
-learn ga.
+learn ga in easy way
