@@ -21,9 +21,9 @@ jobs:
         run: |
           echo hi-2
           touch a2 && echo mum-1>a2 && echo mum-2>>a2
-        #can be accessed within the step
-        env:
-          var_03: name-1
       - name: task_02
         run: echo "$var_01 $var_03 is using $var_02"
+        #can be accessed within the given step
+        env:
+          var_03: name-2
       - uses: actions/checkout@v4
