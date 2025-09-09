@@ -1,4 +1,5 @@
 ---
+#given name of wf which will be displayed on gh repo
 name: demo_01
 on:
   #run the wf when user push the local commits to given branch in rr

@@ -1,0 +1,29 @@
+---
+name: var for single wf
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+#its a map and used to declare vars at wf level so it can be accessed within all jobs and steps in wf
+env:
+  var_01: hello
+jobs:
+  job_01:
+    runs-on: ubuntu-latest
+    #can be accessed in all the steps
+    env:
+      var_02: aws
+    steps:
+      - name: task_01
+        run: |
+          echo hi-2
+          touch a2 && echo mum-1>a2 && echo mum-2>>a2
+        #can be accessed within the step
+        env:
+          var_03: name-1
+      - name: task_02
+        run: echo "$var_01 $var_03 is using $var_02"
+      - uses: actions/checkout@v4
