@@ -25,6 +25,7 @@ jobs:
         # | means will preserve no of lines so cmd will run as it is and not in single line
         run: |
           echo hi-1
-          echo hi-2
+          echo mum-1
+          mkdir dir1 && cd dir1 && touch a1 && echo mum-3>a1
       #give custom action that will perform specific task
       - uses: actions/checkout@v4
