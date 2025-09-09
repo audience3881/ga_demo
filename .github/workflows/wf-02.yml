@@ -1,0 +1,21 @@
+---
+name: config var
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+env:
+  var_01: val-1
+jobs:
+  job_01:
+    runs-on: ubuntu-latest
+    steps:
+      - name: task_01
+        #step-scoped
+        env:
+          var_02: bob-1
+        run: echo '${var_02} runs proj in ${{vars.ENV}} env' # we use ${{var.}} to access config vars and ${} for wf var
+      - name: task_02
+        run: echo 'val is ${var_01}'
+      - uses: actions/checkout@v4
