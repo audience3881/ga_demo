@@ -17,5 +17,5 @@ jobs:
           var_02: bob-1
         run: echo "${var_02} runs proj in ${{vars.ENV}} env" # we use ${{var.}} to access config vars and ${} for wf var
       - name: task_02
-        run: echo "val is ${var_01}"
+        run: echo "val is ${var_01}" #use "" to print onto console
       - uses: actions/checkout@v4

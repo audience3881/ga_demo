@@ -12,4 +12,4 @@ jobs:
           echo "step-scoped var: ${var_01}"
           echo "repo_name: ${{github.repository}}"
           echo "wf_name: ${{github.workflow}}"
-          echi "trggerd_by: ${{github.triggering_actor}}"
+          echo "trggerd_by: ${{github.triggering_actor}}"
