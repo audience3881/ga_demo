@@ -1,0 +1,10 @@
+---
+name: use secrets within wf
+on: workflow_dispatch
+jobs:
+  job_01:
+    runs-on: ubuntu-latest
+    steps:
+      - name: task_01
+        run: |
+          echo "secret is: ${{secrets.SECRET_1}}" #using secrets-context and it will display secrets as it is sensitive data
