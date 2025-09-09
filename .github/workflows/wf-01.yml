@@ -7,13 +7,13 @@ on:
   pull_request:
     branches: ["main"]
   workflow_dispatch:
-#its a map and used to declare vars at wf level so it can be accessed within all jobs and steps in wf
+#its a map and used to declare vars at wf level so it can be accessed within all jobs and steps in wf. wf-scoped
 env:
   var_01: hello
 jobs:
   job_01:
     runs-on: ubuntu-latest
-    #can be accessed in all the steps
+    #can be accessed in all the steps, job-scoped
     env:
       var_02: aws
     steps:
@@ -22,8 +22,10 @@ jobs:
           echo hi-2
           touch a2 && echo mum-1>a2 && echo mum-2>>a2
       - name: task_02
-        run: echo "$var_01 $var_03 is using $var_02"
-        #can be accessed within the given step
+        run: echo "$var_01 $var_03 is using $var_02" #access var using $
+        #can be accessed within the given step, step-scoped
         env:
           var_03: name-2
+      - name: task_03
+        run: echo '$var_02 cloud is used' #access job-scoped var within multiple steps
       - uses: actions/checkout@v4
